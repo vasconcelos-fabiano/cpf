@@ -5,6 +5,8 @@
 using namespace std;
 
 int valida_cpf(string);
+string formataCPF(const std::string& cpf);
+
 int j = 0;
 
 int main()
@@ -100,8 +102,19 @@ int valida_cpf(string cpf_string)
     if (resto1 == 9 && resto2 == 7)
     {   
         j++;
-        cout << "Possibilidade " << setw(5) << setfill('0') << j << ": " << cpf_string << endl;
+        string cpf = formataCPF(cpf_string);
+        cout << "Possibilidade " << setw(3) << setfill('0') << j << ": " << cpf << "97"<< endl;
     }
 
     return 0;
+}
+
+string formataCPF(const string& cpf) {
+
+    string formattedCPF = cpf;
+    formattedCPF.insert(3, ".");
+    formattedCPF.insert(7, ".");
+    formattedCPF.insert(11, "-");
+
+    return formattedCPF;
 }
