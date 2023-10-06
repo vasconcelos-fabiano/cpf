@@ -2,11 +2,7 @@
 #include <iomanip>
 #include <string>
 
-using std::cout;
-using std::endl;
-using std::setw;
-using std::setfill;
-using std::string;
+using namespace std;
 
 int main() {
     cout << "Quantas possibilidades existem para o CPF 245.XXX.XX3-97?" << endl;
@@ -15,8 +11,12 @@ int main() {
     int i;
 
     for (i = 0; cpf_frag <= 999993; i++) {
-        cout << "Possibilidade " << setw(5) << setfill('0') << i << ": 245" << setw(6) << setfill('0') << cpf_frag << endl;
-        if (i >= 10) break;
+        string cpf_str = to_string(cpf_frag);
+        string zeros = string(6 - cpf_str.length(), '0');
+        string result = "245" + zeros + cpf_str;
+        int final_result = stoi(result);
+        cout << "Possibilidade " << setw(5) << setfill('0') << i << ": " << final_result << endl;
+        // if (i >= 10) break;
         cpf_frag += 10;
     }
 
